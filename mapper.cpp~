@@ -1,0 +1,56 @@
+#include <cstdio>
+#include <iostream>
+#include <set>
+#include <iterator>
+#include <vector>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+#include <string>
+
+
+
+using namespace std;
+
+
+
+int main(int argc,char*argv[])
+
+{
+	FILE* fp = (FILE*)fopen(argv[1],"r");
+	FILE* out = (FILE*)fopen(argv[2],"w");
+	int n;
+	vector<int> v;
+	vector<int>::iterator it;
+	cout << "Enter number of edges" << endl;
+	cin >> n;
+	int i,a,b;
+	for(i=0;i<n;i++)
+	{
+		fscanf(fp,"%d %d\n",&a,&b);
+		it = find(v.begin(),v.end(),a);
+		if(it == v.end()){
+			v.push_back(a);
+		}
+		it = find(v.begin(),v.end(),a);
+		a = distance(v.begin(),it);
+		it = find(v.begin(),v.end(),b);
+		if(it == v.end()){
+			v.push_back(b);
+		}
+		it = find(v.begin(),v.end(),b);
+		b = distance(v.begin(),it);
+		fprintf(out,"%d %d\n",a,b);
+
+	}	
+	cout << "num_vertices -- " <<  v.size() << endl;
+
+	FILE* fop = fopen(argv[3],"w");
+	
+	for(it=v.begin();it!=v.end();it++)
+{
+	fprintf(fop,"%d %d\n",distance(v.begin(),it),*it);
+}
+
+	return 0;
+}

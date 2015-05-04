@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["geomap"]});
+      google.setOnLoadCallback(drawMap);
+
+      function drawMap() {
+        var data = google.visualization.arrayToDataTable([
+        ['Country', 'Number of Users'],
+        ['United States',11911],
+['india',4505],
+['united kingdom',2869],
+['germany',1730],
+['canada',1603],
+['australia',1076],
+['france',1028],
+['netherlands',772],
+['brazil',748],
+['south africa',722],
+['sweden',659],
+['china',642],
+['italy',601],
+['poland',566],
+['spain',531],
+['russia',446],
+['ukraine',434],
+['pakistan',409],
+['belgium',392],
+['denmark',384],
+['venezuela',374],
+['switzerland',360],
+['turkey',336],
+['norway',310],
+['romania',300],
+['israel',296],
+['new zealand',268],
+['portugal',261],
+['ireland',236],
+['austria',236],
+['czech republic',226],
+['finland',216],
+['argentina',207],
+['mexico',190],
+['singapore',189],
+['japan',189],
+['philippines',188],
+['greece',178],
+['hungary',163],
+['indonesia',146],
+['sri lanka',143],
+['belarus',141],
+['egypt',139],
+['bulgaria',137],
+['bangladesh',135],
+['the netherlands',132],
+['serbia',106],
+['malaysia',100],
+['vietnam',99],
+['croatia',86]
+        ]);
+
+        var options = {};
+        options['dataMode'] = 'regions'; 
+        var container = document.getElementById('regions_div');
+        var geomap = new google.visualization.GeoMap(container);
+
+        geomap.draw(data, options);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
